@@ -6,12 +6,18 @@ public class Main {
         list.add("Shukurjon");
         list.add("Kumar");
         list.add("Umar");
-        list.show();
-        list.remove(2);
-        list.addFirst("AAAAA");
-        System.out.println(list.size());
         list.insert(2, "BBBBB");
         list.show();
-        System.out.println(list.get(2));
+
+
+        MyOwnList<String> list2 = new MyOwnList<>();
+        list2.add("BBBBSH");
+        list2.add("Shum");
+        list2.add("Bola");
+        list2.show();
+
+        list.addAll(list2);
+        list.sort();
+        list.show();
     }
 }

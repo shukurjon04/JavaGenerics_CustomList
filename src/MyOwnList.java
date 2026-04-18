@@ -1,4 +1,4 @@
-public class MyOwnList<T> {
+public class MyOwnList<T extends Comparable<T>> {
     Object[] fixed;
     T type;
 
@@ -92,4 +92,50 @@ public class MyOwnList<T> {
     }
 
 
+    public void addAll(MyOwnList<T> list) {
+        for (int i = 0; i < list.size(); i++) {
+            add(list.get(i));
+        }
+    }
+
+    public void removeAll(MyOwnList<T> list) {
+        for (int i = 0; i < list.size(); i++) {
+            for (int j = 0; j < size(); j++) {
+                if (get(j).equals(list.get(i))) {
+                    remove(j);
+                    j--;
+                }
+            }
+        }
+
+    }
+
+    public void clear() {
+        fixed = null;
+    }
+
+    public void replace(int index, T element) {
+        fixed[index] = element;
+    }
+
+    public boolean contains(T element) {
+        for (int i = 0; i < size(); i++) {
+            if (get(i).equals(element)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void sort() {
+        for (int i = 0; i < size()-1; i++) {
+           for (int j=0; j<size()-i-1; j++) {
+               if (get(j).compareTo(get(j+1)) > 0) {
+                   T temp = get(j);
+                   replace(j, get(j+1));
+                   replace(j+1, temp);
+               }
+           }
+        }
+    }
 }
